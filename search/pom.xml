@@ -12,18 +12,7 @@
     <name>search</name>
     <description>search</description>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!--项目包-->
+        <!--项目公共包-->
         <dependency>
             <groupId>com.sunkang</groupId>
             <artifactId>common</artifactId>
