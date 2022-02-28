@@ -1,0 +1,18 @@
+server:
+  port: 1000
+eureka:
+  client:
+    #不拉取注册信息
+    fetch-registry: false
+    service-url:
+      defaultZone: @eureka.service@
+    #不注册到eureka
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+  server:
+    #关闭安全模式
+    enable-self-preservation: false
+spring:
+  application:
+    name: @name@

@@ -1,0 +1,32 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: @name@
+  cloud:
+    gateway:
+      routes:
+        - id: search
+          uri: lb://search:8081
+          predicates:
+            - Path=/search/**
+          filters:
+            - StripPrefix=1
+        - id: task
+          uri: lb://task:8082
+          predicates:
+            - Path=/task/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: @eureka.service@
+    registry-fetch-interval-seconds: 30
+  instance:
+    prefer-ip-address: true
+    #心跳时间
+    lease-renewal-interval-in-seconds: 2
+    #心跳时间阈值
+    lease-expiration-duration-in-seconds: 10
+debug: true

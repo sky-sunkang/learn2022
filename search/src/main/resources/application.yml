@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: @name@
+eureka:
+  client:
+    service-url:
+      defaultZone: @eureka.service@
+    registry-fetch-interval-seconds: 30
+  instance:
+    prefer-ip-address: true
+    #心跳时间
+    lease-renewal-interval-in-seconds: 2
+    #心跳时间阈值
+    lease-expiration-duration-in-seconds: 10
+debug: true
