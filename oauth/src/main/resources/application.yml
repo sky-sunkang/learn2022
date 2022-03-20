@@ -18,4 +18,6 @@ eureka:
     lease-renewal-interval-in-seconds: 2
     #心跳时间阈值
     lease-expiration-duration-in-seconds: 10
-debug: true
+logging:
+  level:
+    com.sunkang: debug

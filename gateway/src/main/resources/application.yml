@@ -9,15 +9,24 @@ spring:
         - id: search
           uri: lb://search:8081
           predicates:
-            - Path=/search/**
+            - Path=/search-api/**
           filters:
             - StripPrefix=1
         - id: task
           uri: lb://task:8082
           predicates:
-            - Path=/task/**
+            - Path=/task-api/**
           filters:
             - StripPrefix=1
+        - id: oauth
+          uri: lb://oauth:2000
+          predicates:
+            - Path=/oauth-api/**
+          filters:
+            - StripPrefix=1
+#不拦截
+filter:
+  exclude: /oauth/token, /oauth/check_token
 eureka:
   client:
     service-url:
@@ -26,7 +35,9 @@ eureka:
   instance:
     prefer-ip-address: true
     #心跳时间
-    lease-renewal-interval-in-seconds: 2
+    lease-renewal-interval-in-seconds: 10
     #心跳时间阈值
-    lease-expiration-duration-in-seconds: 10
-debug: true
+    lease-expiration-duration-in-seconds: 30
+logging:
+  level:
+    com.sunkang: debug
