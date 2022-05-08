@@ -28,6 +28,8 @@
         <module>search</module>
         <module>task</module>
         <module>oauth</module>
+        <module>rocketMqDemo</module>
+        <module>redisDemo</module>
     </modules>
     <dependencies>
         <!--测试包-->

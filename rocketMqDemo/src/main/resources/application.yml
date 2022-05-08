@@ -1,0 +1,10 @@
+server:
+  port: 8021
+rocketmq:
+  name-server: 127.0.0.1:9876
+  #生产者
+  producer:
+    group: test_group
+    retry-times-when-send-async-failed: 5
+  consumer:
+    group: test_group

@@ -1,0 +1,27 @@
+
+spring:
+  redis:
+#    sentinel: #哨兵模式 ，使用的本地的D:\Java\redis-list哨兵集群
+#      master: mymaster
+#      nodes:
+#        - 127.0.0.1:26381
+#        - 127.0.0.1:26382
+#        - 127.0.0.1:26383
+    cluster: #集群模式，1master 1solve D:\Java\redis-cluster
+      nodes:
+        - 127.0.0.1:7001
+        - 127.0.0.1:7002
+        - 127.0.0.1:7003
+        - 127.0.0.1:7104
+        - 127.0.0.1:7105
+        - 127.0.0.1:7106
+#    jedis:
+#      pool:
+#        enabled: true
+#        max-idle: 10
+#        max-active: 20
+#        min-idle: 1
+#        max-wait: 2000
+server:
+  port: 8083
+debug: true
