@@ -19,7 +19,10 @@
         <version>0.0.1-SNAPSHOT</version>
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <!--注册中心地址-->
         <eureka.service>http://127.0.0.1:1000/eureka</eureka.service>
+        <!--环境-->
+        <profiles>dev,db</profiles>
     </properties>
     <modules>
         <module>common</module>

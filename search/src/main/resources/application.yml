@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: @name@
+  profiles:
+    active: @profiles@
 eureka:
   client:
     service-url:
@@ -15,6 +17,26 @@ eureka:
     #心跳时间阈值
     lease-expiration-duration-in-seconds: 10
 
+#开发环境
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
 logging:
   level:
     com.sunkang: debug
+
+#测试环境
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+#生产环境
+---
+spring:
+  config:
+    activate:
+      on-profile: prd

@@ -7,6 +7,8 @@ spring:
     host: localhost
     port: 6379
     database: 0
+  profiles:
+    active: @profiles@
 eureka:
   client:
     service-url:
@@ -21,3 +23,24 @@ eureka:
 logging:
   level:
     com.sunkang: debug
+
+#开发环境
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+#测试环境
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+#生产环境
+---
+spring:
+  config:
+    activate:
+      on-profile: prd

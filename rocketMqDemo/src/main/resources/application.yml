@@ -8,3 +8,29 @@ rocketmq:
     retry-times-when-send-async-failed: 5
   consumer:
     group: test_group
+spring:
+  profiles:
+    active: @profiles@
+
+#开发环境
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+#测试环境
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+#生产环境
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+

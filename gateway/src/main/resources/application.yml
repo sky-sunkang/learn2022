@@ -24,6 +24,8 @@ spring:
             - Path=/oauth-api/**
           filters:
             - StripPrefix=1
+  profiles:
+    active: @profiles@
 #不拦截
 filter:
   exclude: /oauth/token, /oauth/check_token
@@ -38,6 +40,29 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     #心跳时间阈值
     lease-expiration-duration-in-seconds: 30
+
+
+
+
+#开发环境
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
 logging:
   level:
     com.sunkang: debug
+#测试环境
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+#生产环境
+---
+spring:
+  config:
+    activate:
+      on-profile: prd
