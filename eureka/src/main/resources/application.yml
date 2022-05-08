@@ -16,3 +16,5 @@ eureka:
 spring:
   application:
     name: @name@
+  profiles:
+    active: @profiles@
