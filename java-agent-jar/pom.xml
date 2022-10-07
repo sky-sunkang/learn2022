@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sunkang</groupId>
+  <artifactId>java-agent-jar</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.21.0-GA</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.22</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <packaging>jar</packaging>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <!-- 指定maven编译的jdk版本。若不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 -->
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+<!--      1、需要将依赖包打入jar-->
+<!--      2、需要指定mian-->
+<!--      3、指定Premain，需要设置可修改字节码-->
+<!--      4、需要添加MANIFEST.MF-->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <!--自动添加META-INF/MANIFEST.MF -->
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.sunkang.PreMainAgent</mainClass>
+            </manifest>
+            <manifestEntries>
+              <Menifest-Version>1.0</Menifest-Version>
+              <Premain-Class>com.sunkang.PreMainAgent</Premain-Class>
+              <Can-Redefine-Classes>true</Can-Redefine-Classes>
+              <Can-Retransform-Classes>true</Can-Retransform-Classes>
+            </manifestEntries>
+          </archive>
+
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -33,6 +33,8 @@
         <module>oauth</module>
         <module>rocketMqDemo</module>
         <module>redisDemo</module>
+        <module>java-agent-jar</module>
+        <module>other</module>
     </modules>
     <dependencies>
         <!--测试包-->

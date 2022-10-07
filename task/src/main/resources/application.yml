@@ -27,7 +27,7 @@ spring:
       on-profile: dev
 logging:
   level:
-    com.sunkang: debug
+    com.sunkang: info
 
 #测试环境
 ---
