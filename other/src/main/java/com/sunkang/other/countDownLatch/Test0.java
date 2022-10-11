@@ -19,15 +19,15 @@ public class Test0 {
         for (int i = 0; i < 10; i++) {
             int finalI = i;
             new Thread(() -> {
+                //异常会导致CountDownLatch中断
+                if (finalI == 0) {
+                    int a = 1 / 0;
+                }
                 try {
                     if (finalI == 2) {
                         Thread.sleep(1000);
                     }
-
                     System.out.println(Thread.currentThread().getName());
-                    if (finalI == 3) {
-                        int a = 1 / 0;
-                    }
                     count.getAndIncrement();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -36,6 +36,7 @@ public class Test0 {
                 }
             }).start();
         }
+        System.out.println(count.get());
         stopWatch.stop();
         stopWatch.start("等待任务执行结果");
         countDownLatch.await(10, TimeUnit.MINUTES);
